@@ -9,14 +9,12 @@ async function getDashboardData(query) {
 
     return Promise.all([promise1, promise2, promise3])
         .then(obj => {
-            let town = {};
+            let town;
             obj.forEach(elem => {
                 town = { ...town, ...elem[0] }
             });
             return town
-        }
-        )
-
+        }).catch(error => { throw new Error(error) })
 }
 
 async function fetchJson(url) {
@@ -25,7 +23,7 @@ async function fetchJson(url) {
     return obj;
 }
 
-getDashboardData('london')
+getDashboardData('vienna')
     .then(data => {
         console.log('Dasboard data:', data);
         console.log(
