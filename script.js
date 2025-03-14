@@ -23,8 +23,21 @@ async function fetchJson(url) {
     return obj;
 }
 
-getDashboardData('vienna')
-    .then(data => {
+// getDashboardData('vienna')
+//     .then(data => {
+//         console.log('Dasboard data:', data);
+//         console.log(
+//             `${data.city} is in ${data.country}.\n` +
+//             `Today there are ${data.temperature} degrees and the weather is ${data.weather_description
+//             }.\n` +
+//             `The main airport is ${data.name}.\n`
+//         );
+//     })
+//     .catch(error => console.error(error));
+
+(async () => {
+    try {
+        const data = await getDashboardData('london')
         console.log('Dasboard data:', data);
         console.log(
             `${data.city} is in ${data.country}.\n` +
@@ -32,5 +45,7 @@ getDashboardData('vienna')
             }.\n` +
             `The main airport is ${data.name}.\n`
         );
-    })
-    .catch(error => console.error(error));
+    } catch (error) {
+        console.error(error);
+    }
+})()
